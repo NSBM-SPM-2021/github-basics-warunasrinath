@@ -230,6 +230,249 @@
 		<br>
 //Comment start
 		
+		<%
+			if (request.getParameter("textDepAirportCode") == null)
+				return;
+			Flight f = new Flight(request.getParameter("textDepAirportCode"),
+					request.getParameter("textArrivalAirportCode"),
+					request.getParameter("maxstops"));
+
+			ResultSet res[] = f.getFlights();
+			ResultSet r = res[0];
+			if (r.first() == false) {
+		%>
+		<%
+			} else {
+				r.beforeFirst();
+				f.data_available_flag = true;
+		%>
+
+		<div class="alert alert-info animated fadeIn" role="alert">
+			Details of <u><i>direct</i></u> flights from <strong><%=request.getParameter("textDepAirportCode")%></strong>
+			to <strong><%=request.getParameter("textArrivalAirportCode")%></strong>
+			are as below
+		</div>
+		<%
+			while (r.next()) {
+					String s = r.getString("weekdays");
+					String days = f.getWeekdays(s);
+		%>
+		<div class="flightdetails animated bounceInRight">
+			<div class="flight_icon"></div>
+			<div class="flightdata">
+				<div class="time">
+					Departure<br> <span style="font-size: 20px; color: #0066FF;"><td><%=r.getString("departure_time")%></span>
+				</div>
+				<div class="data">
+					<span style="font-size: 14px; color: #8B8B8B;">Flight
+						Number: <%=r.getString("flight_number")%>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Airline: <%=r.getString("airline")%>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Total Journey: <%=r.getString("total_journey")%>
+						<br> <span style="font-size: 18px; color: #FF6600;"><%=f.dep.toUpperCase()%>
+							---> <%=f.arr.toUpperCase()%> </span> <br> <span
+						style="font-size: 14px; color: #009933;"><%=days%></span>
+				</div>
+				<div class="time">
+					Arrival<br> <span style="font-size: 20px; color: #0066FF;"><%=r.getString("arrival_time")%></span>
+				</div>
+			</div>
+		</div>
+		<%
+			}
+			}
+			if (f.maxstops > 1) {
+				ResultSet rs = res[1];
+				if (rs.first() == false) {
+		%>
+		<%
+			} else {
+					rs.beforeFirst();
+					f.data_available_flag = true;
+		%>
+		<br>
+		<div class="alert alert-info animated fadeIn" role="alert">
+			Details of flights from <strong><%=request.getParameter("textDepAirportCode")%></strong>
+			to <strong><%=request.getParameter("textArrivalAirportCode")%></strong>
+			via <u><i>one stop</i></u> are as below
+		</div>
+		<%
+			while (rs.next()) {
+						String days1 = rs.getString("f1_weekdays");
+						String days2 = rs.getString("f2_weekdays");
+						StringBuilder days = new StringBuilder("");
+
+						if (days1.contains("Mon") && days2.contains("Mon"))
+							days.append(" Monday");
+
+						if (days1.contains("Tue") && days2.contains("Tue"))
+							days.append(" Tuesday");
+
+						if (days1.contains("Wed") && days2.contains("Wed"))
+							days.append(" Wednesday");
+
+						if (days1.contains("Thu") && days2.contains("Thu"))
+							days.append(" Thursday");
+
+						if (days1.contains("Fri") && days2.contains("Fri"))
+							days.append(" Friday");
+
+						if (days1.contains("Sat") && days2.contains("Sat"))
+							days.append(" Saturday");
+
+						if (days1.contains("Sun") && days2.contains("Sun"))
+							days.append(" Sunday");
+
+						if (days.length() == 57)
+							days = new StringBuilder("All Days");
+		%>
+
+		<div class="flightdetails animated bounceInRight exht">
+			<div class="flight_icon"></div>
+			<div class="flightdata exht">
+				<div class="time exht">
+					Departure<br> <span style="font-size: 20px; color: #0066FF;"><%=rs.getString("f1_departure")%></span>
+				</div>
+				<div class="data exht">
+					<span style="font-size: 14px; color: #8B8B8B;">Flight
+						Number: <%=rs.getString("f1_number")%>&nbsp&nbsp <span
+						style="font-size: 18px; color: #FF6600;"><%=f.dep.toUpperCase()%>
+							---> <%=rs.getString("via")%> </span> <span
+						style="font-size: 14px; color: #8B8B8B;">&nbsp&nbsp arrives
+							at <%=rs.getString("f1_arrival")%> <i>(<%=rs.getString("f1_time").substring(0, 2)
+								+ "h "
+								+ rs.getString("f1_time").substring(3, 5) + "m"%>)
+						</i>
+					</span> <br> <span style="font-size: 14px; color: #8B8B8B;">Flight
+							Number: <%=rs.getString("f2_number")%>&nbsp&nbsp
+					</span> <span style="font-size: 14px; color: #8B8B8B;"> <span
+							style="font-size: 18px; color: #FF6600;"><%=rs.getString("via")%>
+								---> <%=f.arr.toUpperCase()%></span>&nbsp&nbsp Departs at <%=rs.getString("f2_departure")%>
+							<i>(<%=rs.getString("f2_time").substring(0, 2)
+								+ "h "
+								+ rs.getString("f2_time").substring(3, 5) + "m"%>)
+						</i></span> <br>Total Journey: <%=rs.getString("total_journey").substring(0, 2)
+								+ " hrs "
+								+ rs.getString("total_journey").substring(3, 5)
+								+ " mins"%> <br> <span
+						style="font-size: 14px; color: #009933;"><%=days.toString()%></span>
+				</div>
+				<div class="time exht">
+					Arrival<br> <span style="font-size: 20px; color: #0066FF;"><%=rs.getString("f2_arrival")%></span>
+				</div>
+			</div>
+		</div>
+
+		<%
+			}
+
+				}
+			}
+
+			if (f.maxstops > 2) {
+				ResultSet rs = res[2];
+				if (rs.first() == false) {
+		%>
+		<%
+			} else {
+					rs.beforeFirst();
+					f.data_available_flag = true;
+		%>
+
+		<div class="alert alert-info animated fadeIn" role="alert">
+			Details of flights from <strong><%=request.getParameter("textDepAirportCode")%></strong>
+			to <strong><%=request.getParameter("textArrivalAirportCode")%></strong>
+			via <i><u>two stops</u></i> are as below
+		</div>
+		<%
+			while (rs.next()) {
+
+						String days1 = rs.getString("f1_days");
+						String days2 = rs.getString("f2_days");
+						StringBuilder days = new StringBuilder("");
+
+						if (days1.contains("Mon") && days2.contains("Mon"))
+							days.append(" Monday");
+
+						if (days1.contains("Tue") && days2.contains("Tue"))
+							days.append(" Tuesday");
+
+						if (days1.contains("Wed") && days2.contains("Wed"))
+							days.append(" Wednesday");
+
+						if (days1.contains("Thu") && days2.contains("Thu"))
+							days.append(" Thursday");
+
+						if (days1.contains("Fri") && days2.contains("Fri"))
+							days.append(" Friday");
+
+						if (days1.contains("Sat") && days2.contains("Sat"))
+							days.append(" Saturday");
+
+						if (days1.contains("Sun") && days2.contains("Sun"))
+							days.append(" Sunday");
+		%>
+
+		<div class="flightdetails animated bounceInRight exht3">
+			<div class="flight_icon"></div>
+			<div class="flightdata">
+				<div class="time exht3">
+					Departure<br> <span style="font-size: 20px; color: #0066FF;"><%=rs.getString("f1_dep")%></span>
+				</div>
+				<div class="data exht3">
+					<span style="font-size: 14px; color: #8B8B8B;">Flight
+						Number: <%=rs.getString("f1_number")%>&nbsp&nbsp <span
+						style="font-size: 18px; color: #FF6600;"><%=f.dep.toUpperCase()%>
+							---> <%=rs.getString("via_1").toUpperCase()%> </span> <span
+						style="font-size: 14px; color: #8B8B8B;">&nbsp&nbsp arrives
+							at <%=rs.getString("f1_arrival")%> <i>(<%=rs.getString("f1_time").substring(0, 2)
+								+ "h "
+								+ rs.getString("f1_time").substring(3, 5) + "m"%>)
+						</i>
+					</span> <br> <span style="font-size: 14px; color: #8B8B8B;">Flight
+							Number: <%=rs.getString("f2_number")%>&nbsp&nbsp
+					</span> <span style="font-size: 14px; color: #8B8B8B;"> <span
+							style="font-size: 18px; color: #FF6600;"><%=rs.getString("via_1")%>
+								---> <%=rs.getString("via_2")%></span>&nbsp&nbsp departs at <%=rs.getString("f2_dep")%>
+							<i>(<%=rs.getString("f2_time").substring(0, 2)
+								+ "h "
+								+ rs.getString("f2_time").substring(3, 5) + "m"%>)
+						</i></span> <br> <span style="font-size: 14px; color: #8B8B8B;">Flight
+							Number: <%=rs.getString("f3_number")%>&nbsp&nbsp <span
+							style="font-size: 18px; color: #FF6600;"><%=rs.getString("via_2")%>
+								---> <%=f.arr.toUpperCase()%> </span> <span
+							style="font-size: 14px; color: #8B8B8B;">&nbsp&nbsp
+								departs at <%=rs.getString("f3_dep")%> <i>(<%=rs.getString("f3_time").substring(0, 2)
+								+ "h "
+								+ rs.getString("f3_time").substring(3, 5) + "m"%>)
+							</i>
+						</span> <br> Total Journey: <%=rs.getString("total_journey").substring(0, 2)
+								+ " hrs "
+								+ rs.getString("total_journey").substring(3, 5)
+								+ " mins"%> <br> <span
+							style="font-size: 14px; color: #009933;"><%=days.toString()%></span>
+				</div>
+				<div class="time exht3">
+					Arrival<br> <span style="font-size: 20px; color: #0066FF;"><%=rs.getString("f3_arrival")%></span>
+				</div>
+			</div>
+		</div>
+
+		<%
+			}
+
+				}
+			}
+
+			if (!f.data_available_flag) {
+		%>
+		<div class="alert alert-warning animated pulse" role="alert">
+			Details of flights from <strong><%=request.getParameter("textDepAirportCode")%></strong>
+			to <strong><%=request.getParameter("textArrivalAirportCode")%></strong>
+			are not available.
+		</div>
+		<%
+			}
+		%>
 
 
 	</div>
