@@ -136,7 +136,7 @@
 			%>
 		</table>
 	</div>
-	<%@ include file="Footer.jsp"%>
+	<%@ include file="TheFooter.jsp"%>
 </body>
 
 </head>
