@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>NSBM Insert title here</title>
+<title>M V P Airlines</title>
 
 <link rel="stylesheet" href="bootstrap.min.css">
 <link rel="stylesheet" href="animate.css">
