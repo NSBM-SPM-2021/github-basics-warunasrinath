@@ -21,35 +21,28 @@ import java.sql.ResultSetMetaData;
 /**
  * Servlet implementation class CustomerFlightDetails
  */
-@WebServlet("/GetAirportCodes")
-public class GetAirportCodes extends HttpServlet {
+@WebServlet("/GetFlightNumbers")
+public class GetFlightNumbers extends HttpServlet {
 	private static final long serialVersionUID = 2L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetAirportCodes() {
+    public GetFlightNumbers() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-     * @param request
-uest
-     * @param response
-     * @throws javax.servlet.ServletException
-     * @throws java.io.IOException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-        @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
 		String url = "jdbc:mysql://localhost:3306/airlinedb?useSSL=false&serverTimezone=UTC";
 		String username = "root";
 		String password = "";
-            String query = null;
-		log(query);
+		String query="Select distinct flight_number from flight where flight_number like '%"+request.getParameter("flightnumber")+"%'";
 		Connection conn = null;
 		//out.println(query);
 		PreparedStatement stmt=null;
