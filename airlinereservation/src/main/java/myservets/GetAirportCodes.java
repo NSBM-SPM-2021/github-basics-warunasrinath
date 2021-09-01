@@ -35,6 +35,7 @@ public class GetAirportCodes extends HttpServlet {
 
 	/**
      * @param request
+uest
      * @param response
      * @throws javax.servlet.ServletException
      * @throws java.io.IOException
@@ -47,7 +48,7 @@ public class GetAirportCodes extends HttpServlet {
 		String url = "jdbc:mysql://localhost:3306/airlinedb?useSSL=false&serverTimezone=UTC";
 		String username = "root";
 		String password = "";
-		String query="Select distinct airport_code, city from airport where airport_code like '%"+request.getParameter("airportcode")+"%'";
+            String query = null;
 		log(query);
 		Connection conn = null;
 		//out.println(query);
