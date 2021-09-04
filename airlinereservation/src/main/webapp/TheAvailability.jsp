@@ -19,16 +19,16 @@
 <title>Seat Availability</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="myscript.js"></script>
+<script src="TheMyscript.js"></script>
 
 <body>
 	<%@ include file="Header.jsp"%>
 	<div class="container">
 	
 		<%!public class Availability {
-		String url = "jdbc:mysql://localhost:3306/airlinedb?useSSL=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
 		String username = "root";
-		String password = "";
+		String password = "waruna@12345";
 		Connection conn = null;
 		PreparedStatement selectFlights = null;
 		ResultSet res = null;

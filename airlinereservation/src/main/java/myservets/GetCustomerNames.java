@@ -21,36 +21,29 @@ import java.sql.ResultSetMetaData;
 /**
  * Servlet implementation class CustomerFlightDetails
  */
-@WebServlet("/GetAirportCodes")
-public class GetAirportCodes extends HttpServlet {
+@WebServlet("/GetCustomerNames")
+public class GetCustomerNames extends HttpServlet {
 	private static final long serialVersionUID = 2L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetAirportCodes() {
+    public GetCustomerNames() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-     * @param req		String query="Select distinct airport_code, city from airport where airport_code like '%"+request.getParameter("airportcode")+"%'";
-uest
-     * @param response
-     * @throws javax.servlet.ServletException
-     * @throws java.io.IOException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-        @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-                
 		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
 		String username = "root";
 		String password = "waruna@12345";
-            String query = null;
-		log(query);
+		String query="Select distinct customer_name from seat_reservations where customer_name like '%"+request.getParameter("customername")+"%'";
+//		log(query);
 		Connection conn = null;
 		//out.println(query);
 		PreparedStatement stmt=null;
