@@ -66,9 +66,9 @@
 	<%@ include file="Header.jsp"%>
 	<div class="container">
 		<%!public class Flight {
-		String url = "jdbc:mysql://localhost:3306/airlinedb?useSSL=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
 		String username = "root";
-		String password = "";
+		String password = "waruna@12345";
 		boolean data_available_flag = false;
 		Connection conn = null;
 		PreparedStatement selectFlights = null;

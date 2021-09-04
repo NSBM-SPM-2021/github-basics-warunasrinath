@@ -39,7 +39,7 @@ body:before {
 	<div class="container">
 		<div class="collapse navbar-collapse" id="navbardiv">
 			<ul class="nav navbar-nav" id="myTab">
-				<li><a href="index.jsp">Home</a></li>
+				<li><a href="Theindex.jsp">Home</a></li>
 				<li class="divider"></li>
 				<li><a href="TheFlightDetails.jsp">Flight Details</a></li>
 				<li class="divider"></li>
@@ -61,7 +61,7 @@ body:before {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-right" href="index.jsp">MVP Airline Reservation
+				<a class="navbar-brand navbar-right" href="Theindex.jsp">MVP Airline Reservation
 					System</a>
 			</div>
 		</div>
