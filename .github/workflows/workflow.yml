@@ -34,6 +34,15 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      
+      
+          deploy:
+            provider: heroku
+            api_key: 6e6c42f8-db91-491f-80b3-2f6979220679
+            app: mvpairlinereservation
+            
+          #- name: Deploy to Heroku
+        
           
         #  jobs:
          #   deploy:
