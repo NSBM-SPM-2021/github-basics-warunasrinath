@@ -16,7 +16,7 @@
 <div class="container">
 	<div class="jumbotron">
 		
-		<h2>Our Mission Statement</h2>
+		<h2>M.V.P Our Mission Statement</h2>
 		
 		<blockquote>
 		<p>"To provide our owners and customers with customized and unique air transportation experiences trough and environment that fosters continuous improvement, 
