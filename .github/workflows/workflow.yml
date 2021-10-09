@@ -34,15 +34,27 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      - name: Deploy to Heroku
+          
+      - name: Deploy to Heroku  
         env:
-           HEROKU_API_TOKEN: ${6e6c42f8-db91-491f-80b3-2f6979220679}
-           HEROKU_APP_NAME: ${mvpairlinereservation}
+          HEROKU_API_TOKEN: ${e0dd480d-fa81-46c6-aa01-9f7aa0706354}
+          HEROKU_APP_NAME: ${mvpairlinenew}
         if: github.ref == 'refs/heads/master' && job.status == 'success'
         run: |
-          git remote add heroku https://heroku:$6e6c42f8-db91-491f-80b3-2f6979220679@git.heroku.com/$mvpairlinereservation.git
-          git push heroku HEAD:Development -f
+           git remote add heroku https://heroku:$e0dd480d-fa81-46c6-aa01-9f7aa0706354@git.heroku.com/$mvpairlinenew.git
+           git push heroku HEAD:Development -f
+       
+       
+ 
+#       - name: Deploy to Heroku
+#         env:
+#            HEROKU_API_TOKEN: ${6e6c42f8-db91-491f-80b3-2f6979220679}
+#            HEROKU_APP_NAME: ${mvpairlinereservation}
+#         if: github.ref == 'refs/heads/master' && job.status == 'success'
+#         run: |
+#           git remote add heroku https://heroku:$6e6c42f8-db91-491f-80b3-2f6979220679@git.heroku.com/$mvpairlinereservation.git
+#           git push heroku HEAD:Development -f
+
   
 #           deploy:
 #             provider: heroku
