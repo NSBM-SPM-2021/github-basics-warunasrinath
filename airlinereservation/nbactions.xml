@@ -8,4 +8,12 @@
                 <goal>war:war</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-compile war</actionName>
+            <displayName>compile war</displayName>
+            <goals>
+                <goal>compile</goal>
+                <goal>war:war</goal>
+            </goals>
+        </action>
     </actions>

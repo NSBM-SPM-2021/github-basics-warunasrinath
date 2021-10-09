@@ -39,9 +39,9 @@ public class CustomerFlightDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
-		String username = "root";
-		String password = "waruna@12345";
+		String url = "jdbc:mysql://sql6.freemysqlhosting.net/sql6442423?useSSL=false&serverTimezone=UTC";
+		String username = "sql6442423";
+		String password = "L2ZUb1llsF";
 		
 		String query="Select * from seat_reservations natural join flight where customer_name like '%"+ request.getParameter("textCustomerName")+"%' order by customer_name";
 		System.out.println(query);

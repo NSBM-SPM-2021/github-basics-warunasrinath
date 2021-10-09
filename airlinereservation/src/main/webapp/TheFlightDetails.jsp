@@ -66,9 +66,9 @@
 	<%@ include file="Header.jsp"%>
 	<div class="container">
 		<%!public class Flight {
-		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
-		String username = "root";
-		String password = "waruna@12345";
+		String url = "jdbc:mysql://sql6.freemysqlhosting.net/sql6442423?useSSL=false&serverTimezone=UTC";
+		String username = "sql6442423";
+		String password = "L2ZUb1llsF";
 		boolean data_available_flag = false;
 		Connection conn = null;
 		PreparedStatement selectFlights = null;
@@ -228,7 +228,7 @@
 
 		<datalist id="airportlist" name="flightlist"> </datalist>
 		<br>
-//Comment start
+
 		
 		<%
 			if (request.getParameter("textDepAirportCode") == null)

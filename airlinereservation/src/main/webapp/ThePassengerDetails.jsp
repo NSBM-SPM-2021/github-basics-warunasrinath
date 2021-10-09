@@ -108,9 +108,9 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<%!public class Customers {
-		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
-		String username = "root";
-		String password = "waruna@12345";
+		String url = "jdbc:mysql://sql6.freemysqlhosting.net/sql6442423?useSSL=false&serverTimezone=UTC";
+		String username = "sql6442423";
+		String password = "L2ZUb1llsF";
 
 		Connection conn = null;
 		PreparedStatement selectCustomers = null;

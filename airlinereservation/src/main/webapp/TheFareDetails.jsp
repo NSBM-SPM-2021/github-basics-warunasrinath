@@ -21,9 +21,9 @@
 	<%@ include file="Header.jsp"%>
 	<div class="container">
 		<%!public class FareDetails {
-		String url = "jdbc:mysql://localhost:3305/airlinedb?useSSL=false&serverTimezone=UTC";
-		String username = "root";
-		String password = "waruna@12345";
+		String url = "jdbc:mysql://sql6.freemysqlhosting.net/sql6442423?useSSL=false&serverTimezone=UTC";
+		String username = "sql6442423";
+		String password = "L2ZUb1llsF";
 
 		Connection conn = null;
 		PreparedStatement selectFlights = null;
@@ -63,7 +63,7 @@
 					name="textFlightNumber" list="flightlist"
 					placeholder="Enter Flight Number" required maxlength="4"
 					minlength="2" pattern="[0-9]*"
-					oninvalid="setCustomValidity('Enter flight number in proper format e.g 7530')"
+					oninvalid="setCustomValidity('Enter flight number in proper format e.g 8000')"
 					oninput="setCustomValidity('')">
 			</div>
 			<button type="submit" class="btn btn-primary" id="searchflightnumber">Search
