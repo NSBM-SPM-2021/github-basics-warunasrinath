@@ -48,7 +48,8 @@ https://airlinereservationnew.atlassian.net/jira/software/projects/ARS/issues/
 
 ## 💻 JUnit Testing 
 
-![testing2](https://user-images.githubusercontent.com/56961480/137371099-5c5085d5-ea8e-4f8d-a147-d41aafbcaae0.PNG)
+![test](https://user-images.githubusercontent.com/56961480/137427471-085e6911-d326-40c3-b797-b22394f9cdcf.jpg)
+
 
 ## 📚  Resources 
 * [HOW TO USE JIRA | Free Agile Project Management Software](https://www.youtube.com/watch?v=GWxMTvRGIpc) 
